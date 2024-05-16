@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pruebaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Caja">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="CodigoBarras" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Zona" Type="Int32" />
+    <Property Name="Seccion" Type="Int32" />
+    <Property Name="Nivel" Type="Int32" />
+    <Property Name="Cara" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EntidadID" Type="Int32" />
+    <NavigationProperty Name="EntidadFinanciera" Relationship="Self.FK__Caja__EntidadID__4222D4EF" FromRole="Caja" ToRole="EntidadFinanciera" />
+    <NavigationProperty Name="Carpetas" Relationship="Self.FK__Carpeta__CajaID__44FF419A" FromRole="Caja" ToRole="Carpeta" />
+  </EntityType>
+  <EntityType Name="Carpeta">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="CodigoBarras" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CajaID" Type="Int32" />
+    <Property Name="ClienteID" Type="Int32" />
+    <Property Name="EntidadID" Type="Int32" />
+    <NavigationProperty Name="Caja" Relationship="Self.FK__Carpeta__CajaID__44FF419A" FromRole="Carpeta" ToRole="Caja" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK__Carpeta__Cliente__45F365D3" FromRole="Carpeta" ToRole="Cliente" />
+    <NavigationProperty Name="EntidadFinanciera" Relationship="Self.FK__Carpeta__Entidad__46E78A0C" FromRole="Carpeta" ToRole="EntidadFinanciera" />
+    <NavigationProperty Name="Folios" Relationship="Self.FK__Folio__CarpetaID__4AB81AF0" FromRole="Carpeta" ToRole="Folio" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="TipoIdentificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroDocumento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Apellidos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TelefonoFijo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TelefonoCelular" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Carpetas" Relationship="Self.FK__Carpeta__Cliente__45F365D3" FromRole="Cliente" ToRole="Carpeta" />
+    <NavigationProperty Name="EntidadFinancieras" Relationship="Self.ClienteEntidad" FromRole="Cliente" ToRole="EntidadFinanciera" />
+  </EntityType>
+  <EntityType Name="EntidadFinanciera">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cajas" Relationship="Self.FK__Caja__EntidadID__4222D4EF" FromRole="EntidadFinanciera" ToRole="Caja" />
+    <NavigationProperty Name="Carpetas" Relationship="Self.FK__Carpeta__Entidad__46E78A0C" FromRole="EntidadFinanciera" ToRole="Carpeta" />
+    <NavigationProperty Name="TipologiaDocumentals" Relationship="Self.FK__Tipologia__Entid__3F466844" FromRole="EntidadFinanciera" ToRole="TipologiaDocumental" />
+    <NavigationProperty Name="Clientes" Relationship="Self.ClienteEntidad" FromRole="EntidadFinanciera" ToRole="Cliente" />
+  </EntityType>
+  <EntityType Name="Folio">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="RutaImagen" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TipologiaID" Type="Int32" />
+    <Property Name="CarpetaID" Type="Int32" />
+    <NavigationProperty Name="Carpeta" Relationship="Self.FK__Folio__CarpetaID__4AB81AF0" FromRole="Folio" ToRole="Carpeta" />
+    <NavigationProperty Name="TipologiaDocumental" Relationship="Self.FK__Folio__Tipologia__49C3F6B7" FromRole="Folio" ToRole="TipologiaDocumental" />
+  </EntityType>
+  <EntityType Name="TipologiaDocumental">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EntidadID" Type="Int32" />
+    <NavigationProperty Name="EntidadFinanciera" Relationship="Self.FK__Tipologia__Entid__3F466844" FromRole="TipologiaDocumental" ToRole="EntidadFinanciera" />
+    <NavigationProperty Name="Folios" Relationship="Self.FK__Folio__Tipologia__49C3F6B7" FromRole="TipologiaDocumental" ToRole="Folio" />
+  </EntityType>
+  <Association Name="FK__Caja__EntidadID__4222D4EF">
+    <End Role="EntidadFinanciera" Type="Self.EntidadFinanciera" Multiplicity="0..1" />
+    <End Role="Caja" Type="Self.Caja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntidadFinanciera">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Caja">
+        <PropertyRef Name="EntidadID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Carpeta__CajaID__44FF419A">
+    <End Role="Caja" Type="Self.Caja" Multiplicity="0..1" />
+    <End Role="Carpeta" Type="Self.Carpeta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Caja">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Carpeta">
+        <PropertyRef Name="CajaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Carpeta__Cliente__45F365D3">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="Carpeta" Type="Self.Carpeta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Carpeta">
+        <PropertyRef Name="ClienteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Carpeta__Entidad__46E78A0C">
+    <End Role="EntidadFinanciera" Type="Self.EntidadFinanciera" Multiplicity="0..1" />
+    <End Role="Carpeta" Type="Self.Carpeta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntidadFinanciera">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Carpeta">
+        <PropertyRef Name="EntidadID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Folio__CarpetaID__4AB81AF0">
+    <End Role="Carpeta" Type="Self.Carpeta" Multiplicity="0..1" />
+    <End Role="Folio" Type="Self.Folio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Carpeta">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Folio">
+        <PropertyRef Name="CarpetaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tipologia__Entid__3F466844">
+    <End Role="EntidadFinanciera" Type="Self.EntidadFinanciera" Multiplicity="0..1" />
+    <End Role="TipologiaDocumental" Type="Self.TipologiaDocumental" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntidadFinanciera">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="TipologiaDocumental">
+        <PropertyRef Name="EntidadID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Folio__Tipologia__49C3F6B7">
+    <End Role="TipologiaDocumental" Type="Self.TipologiaDocumental" Multiplicity="0..1" />
+    <End Role="Folio" Type="Self.Folio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipologiaDocumental">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Folio">
+        <PropertyRef Name="TipologiaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClienteEntidad">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+    <End Role="EntidadFinanciera" Type="Self.EntidadFinanciera" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="pruebaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cajas" EntityType="Self.Caja" />
+    <EntitySet Name="Carpetas" EntityType="Self.Carpeta" />
+    <EntitySet Name="Clientes" EntityType="Self.Cliente" />
+    <EntitySet Name="EntidadFinancieras" EntityType="Self.EntidadFinanciera" />
+    <EntitySet Name="Folios" EntityType="Self.Folio" />
+    <EntitySet Name="TipologiaDocumentals" EntityType="Self.TipologiaDocumental" />
+    <AssociationSet Name="FK__Caja__EntidadID__4222D4EF" Association="Self.FK__Caja__EntidadID__4222D4EF">
+      <End Role="EntidadFinanciera" EntitySet="EntidadFinancieras" />
+      <End Role="Caja" EntitySet="Cajas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Carpeta__CajaID__44FF419A" Association="Self.FK__Carpeta__CajaID__44FF419A">
+      <End Role="Caja" EntitySet="Cajas" />
+      <End Role="Carpeta" EntitySet="Carpetas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Carpeta__Cliente__45F365D3" Association="Self.FK__Carpeta__Cliente__45F365D3">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="Carpeta" EntitySet="Carpetas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Carpeta__Entidad__46E78A0C" Association="Self.FK__Carpeta__Entidad__46E78A0C">
+      <End Role="EntidadFinanciera" EntitySet="EntidadFinancieras" />
+      <End Role="Carpeta" EntitySet="Carpetas" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Folio__CarpetaID__4AB81AF0" Association="Self.FK__Folio__CarpetaID__4AB81AF0">
+      <End Role="Carpeta" EntitySet="Carpetas" />
+      <End Role="Folio" EntitySet="Folios" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tipologia__Entid__3F466844" Association="Self.FK__Tipologia__Entid__3F466844">
+      <End Role="EntidadFinanciera" EntitySet="EntidadFinancieras" />
+      <End Role="TipologiaDocumental" EntitySet="TipologiaDocumentals" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Folio__Tipologia__49C3F6B7" Association="Self.FK__Folio__Tipologia__49C3F6B7">
+      <End Role="TipologiaDocumental" EntitySet="TipologiaDocumentals" />
+      <End Role="Folio" EntitySet="Folios" />
+    </AssociationSet>
+    <AssociationSet Name="ClienteEntidad" Association="Self.ClienteEntidad">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="EntidadFinanciera" EntitySet="EntidadFinancieras" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

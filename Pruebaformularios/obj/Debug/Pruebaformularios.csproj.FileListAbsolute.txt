@@ -1,0 +1,17 @@
+C:\Users\tato-\Desktop\prueba_samtel\Pruebaformularios\Pruebaformularios\bin\Debug\Pruebaformularios.exe.config
+C:\Users\tato-\Desktop\prueba_samtel\Pruebaformularios\Pruebaformularios\bin\Debug\Pruebaformularios.exe
+C:\Users\tato-\Desktop\prueba_samtel\Pruebaformularios\Pruebaformularios\bin\Debug\Pruebaformularios.pdb
+C:\Users\tato-\Desktop\prueba_samtel\Pruebaformularios\Pruebaformularios\bin\Debug\EntityFramework.dll
+C:\Users\tato-\Desktop\prueba_samtel\Pruebaformularios\Pruebaformularios\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\tato-\Desktop\prueba_samtel\Pruebaformularios\Pruebaformularios\bin\Debug\EntityFramework.xml
+C:\Users\tato-\Desktop\prueba_samtel\Pruebaformularios\Pruebaformularios\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\tato-\Desktop\prueba_samtel\Pruebaformularios\Pruebaformularios\obj\Debug\Pruebaformularios.csproj.AssemblyReference.cache
+C:\Users\tato-\Desktop\prueba_samtel\Pruebaformularios\Pruebaformularios\obj\Debug\Pruebaformularios.Form1.resources
+C:\Users\tato-\Desktop\prueba_samtel\Pruebaformularios\Pruebaformularios\obj\Debug\Pruebaformularios.Properties.Resources.resources
+C:\Users\tato-\Desktop\prueba_samtel\Pruebaformularios\Pruebaformularios\obj\Debug\Pruebaformularios.csproj.GenerateResource.cache
+C:\Users\tato-\Desktop\prueba_samtel\Pruebaformularios\Pruebaformularios\obj\Debug\Pruebaformularios.csproj.CoreCompileInputs.cache
+C:\Users\tato-\Desktop\prueba_samtel\Pruebaformularios\Pruebaformularios\obj\Debug\Pruebafo.C7401BDB.Up2Date
+C:\Users\tato-\Desktop\prueba_samtel\Pruebaformularios\Pruebaformularios\obj\Debug\Pruebaformularios.exe
+C:\Users\tato-\Desktop\prueba_samtel\Pruebaformularios\Pruebaformularios\obj\Debug\Pruebaformularios.pdb
+C:\Users\tato-\Desktop\prueba_samtel\Pruebaformularios\Pruebaformularios\obj\Debug\Pruebaformularios.Form2.resources
+C:\Users\tato-\Desktop\prueba_samtel\Pruebaformularios\Pruebaformularios\obj\Debug\Pruebaformularios.Form3.resources

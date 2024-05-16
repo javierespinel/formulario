@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="pruebaModelStoreContainer" CdmEntityContainer="pruebaEntities">
+    <EntitySetMapping Name="Cajas">
+      <EntityTypeMapping TypeName="pruebaModel.Caja">
+        <MappingFragment StoreEntitySet="Caja">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CodigoBarras" ColumnName="CodigoBarras" />
+          <ScalarProperty Name="Zona" ColumnName="Zona" />
+          <ScalarProperty Name="Seccion" ColumnName="Seccion" />
+          <ScalarProperty Name="Nivel" ColumnName="Nivel" />
+          <ScalarProperty Name="Cara" ColumnName="Cara" />
+          <ScalarProperty Name="EntidadID" ColumnName="EntidadID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carpetas">
+      <EntityTypeMapping TypeName="pruebaModel.Carpeta">
+        <MappingFragment StoreEntitySet="Carpeta">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CodigoBarras" ColumnName="CodigoBarras" />
+          <ScalarProperty Name="CajaID" ColumnName="CajaID" />
+          <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+          <ScalarProperty Name="EntidadID" ColumnName="EntidadID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="pruebaModel.Cliente">
+        <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TipoIdentificacion" ColumnName="TipoIdentificacion" />
+          <ScalarProperty Name="NumeroDocumento" ColumnName="NumeroDocumento" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="TelefonoFijo" ColumnName="TelefonoFijo" />
+          <ScalarProperty Name="TelefonoCelular" ColumnName="TelefonoCelular" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntidadFinancieras">
+      <EntityTypeMapping TypeName="pruebaModel.EntidadFinanciera">
+        <MappingFragment StoreEntitySet="EntidadFinanciera">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Folios">
+      <EntityTypeMapping TypeName="pruebaModel.Folio">
+        <MappingFragment StoreEntitySet="Folio">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RutaImagen" ColumnName="RutaImagen" />
+          <ScalarProperty Name="TipologiaID" ColumnName="TipologiaID" />
+          <ScalarProperty Name="CarpetaID" ColumnName="CarpetaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipologiaDocumentals">
+      <EntityTypeMapping TypeName="pruebaModel.TipologiaDocumental">
+        <MappingFragment StoreEntitySet="TipologiaDocumental">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="EntidadID" ColumnName="EntidadID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ClienteEntidad" TypeName="pruebaModel.ClienteEntidad" StoreEntitySet="ClienteEntidad">
+      <EndProperty Name="Cliente">
+        <ScalarProperty Name="ID" ColumnName="ClienteID" />
+      </EndProperty>
+      <EndProperty Name="EntidadFinanciera">
+        <ScalarProperty Name="ID" ColumnName="EntidadID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
